@@ -1,0 +1,5 @@
+.DS_Store
+.idea/
+scripts/example.py
+dbxml/*
+stanford-results/*
