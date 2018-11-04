@@ -9,14 +9,13 @@ import copy
 xml = 'displays.xml'
 # xml = 'dblp.xml'
 index = 0
-authors_list = []
+authors_list = set()
 graph_edges = []
 
 
 def add_authors_to_list(new_authors):
     for author in new_authors:
-        if author not in authors_list:
-            authors_list.append(author)
+        authors_list.add(author)
 
 
 def add_edges_to_list(new_edges):
