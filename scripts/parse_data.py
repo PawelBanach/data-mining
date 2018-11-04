@@ -1,12 +1,13 @@
 import pdb
 import networkx as nx
 import igraph
-import xml.etree.ElementTree as ET
+from lxml import etree
+from igraph import Graph, mean
 from itertools import combinations
 import copy
 
-tree = ET.parse('displays.xml')
-root = tree.getroot()
+xml = 'displays.xml'
+# xml = 'dblp.xml'
 index = 0
 authors_list = []
 graph_edges = []
@@ -23,11 +24,19 @@ def add_edges_to_list(new_edges):
         graph_edges.append(copy.deepcopy(edge))
 
 
-for article in root:
-    authors = list(map(lambda author: author.text, article.findall('author')))
-    add_authors_to_list(authors)
-    edges = combinations(authors, 2)
-    add_edges_to_list(edges)
+authors = []
+for event, elem in etree.iterparse(source=xml, dtd_validation=True,
+                                   load_dtd=True):
+    if event == 'end':
+        if elem.tag == 'article':
+            if len(authors) > 0:
+                add_authors_to_list(authors)
+                edges = combinations(authors, 2)
+                add_edges_to_list(edges)
+            authors = []
+        if elem.tag == 'author' and elem.tag is not None:
+            authors.append(elem.text.encode('utf-8'))
+        elem.clear()
 
 g = igraph.Graph()
 
@@ -42,10 +51,53 @@ print('Communities:')
 p = g.community_multilevel()
 print(p)
 
+print("Vertices")
+i = g.vcount()
+print(i)
+
+print("Edges")
+i = g.ecount()
+print(i)
+
 print('Modularity')
 q = g.modularity(p)
 print(q)
 
+print("Average clustering coefficient")
+i = igraph.GraphBase.transitivity_avglocal_undirected(g)
+print(i)
+
+print("Degree distribution")
+i = igraph.Graph.degree_distribution(g)
+print(i)
+
+print("Average degree distribution")
+i = mean(g.degree())
+print(i)
+
+print("Clique number")
+i = g.clique_number()
+print(i)
+
+print("Density")
+i = g.density()
+print(i)
+
+print("Max degree")
+max_degree = g.maxdegree()
+print(max_degree)
+
+print("Person with max degree")
+print([v.attributes()['name'] for v in g.vs(_degree_eq=max_degree)])
+
+print("Eigenvector centrality")
+i = mean(g.eigenvector_centrality())  # look at a combination of a nodes edges and the edges of that nodes neighbors.
+# cares if you are a hub, but it also cares how many hubs you are connected to
+print(i)
+
+print("Betweenness")
+between = mean(g.betweenness())  # looks at all the shortest paths that pass through a particular node
+print(between)
 
 g.vs["label"] = g.vs["name"]
 
