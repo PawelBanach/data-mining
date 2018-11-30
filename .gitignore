@@ -1,5 +1,7 @@
 .DS_Store
 .idea/
 scripts/example.py
+scripts/dblp.xml
+scripts/test.py
 dbxml/*
 stanford-results/*
