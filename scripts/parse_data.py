@@ -1,5 +1,3 @@
-import pdb
-import networkx as nx
 import igraph
 from lxml import etree
 from igraph import Graph, mean
@@ -7,10 +5,10 @@ from itertools import combinations
 import copy
 
 xml = 'dblp.xml'
-# xml = 'displays.xml'
 
 index = 0
 authors_list = set()
+authors_in_the_biggest_communites = set()
 graph_edges = []
 title = ''
 authorship = {}
@@ -70,8 +68,8 @@ def show_big_communities(communites, authors, authorship):
     for i, community in enumerate(ten_biggest_communities):
         print('DETAILED INFO - COMMUNITY ', i)
         show_community_size(community)
+        # authors_in_the_biggest_communites.update(map(lambda x: authors[x], community))
         show_the_most_popular_journals(community, authors, authorship, 10)
-        # todo: show other details about community
 
 
 authors = []
@@ -121,7 +119,9 @@ g.add_edges(graph_edges)  # add the edges to the graph.
 
 print('Communities:')
 p = g.community_multilevel()
-# print(p)
+print(p)
+print('Number of communities')
+print(len(p))
 
 if print_communities_details:
     show_big_communities(p, graph_vertices, authorship)
@@ -190,4 +190,4 @@ if print_graph:
     g.vs["label"] = g.vs["name"]
     # layout = g.layout("mds")
     layout = g.layout("graphopt")
-    igraph.plot(g, layout=layout, bbox=(10000, 10000), vertex_size=40, edge_width=1, label_size=10)
+    igraph.plot(g, layout=layout, bbox=(10000, 10000), vertex_size=10, edge_width=0.5, label_size=1)
