@@ -1,0 +1,297 @@
+Number of communities
+57271
+
+
+DETAILED INFO - COMMUNITY  0
+Community size: 
+236585
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 128759], ['SIGMOD Record', 75692], ['World Wide Web', 48362], ['CoRR', 23045], ['Int. J. Hum.-Comput. Stud.', 18198], ['Sensors', 13051], ['IEEE Access', 11907], ['Neurocomputing', 10581], ['Applied Mathematics and Computation', 6323], ['IEICE Transactions', 5850]]
+Degree distribution
+Average clustering coefficient
+0.6937378224502583
+Vertices
+236585
+Edges
+2707470
+Average degree distribution
+22.887926115349334
+Clique number
+95
+Density
+9.674333900580625e-05
+Max degree
+3990
+Person with max degree
+['Wen Gao 0001']
+Eigenvector centrality
+9.976185462881075e-05
+
+
+DETAILED INFO - COMMUNITY  1
+Community size: 
+101328
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 56068], ['SIGMOD Record', 33640], ['World Wide Web', 19189], ['IEICE Transactions', 12798], ['Int. J. Hum.-Comput. Stud.', 7090], ['Systems and Computers in Japan', 3893], ['CoRR', 3872], ['JRM', 3715], ['Advanced Robotics', 2046], ['IEICE Electronic Express', 1645]]
+Degree distribution
+Average clustering coefficient
+0.7787705046668731
+Vertices
+101328
+Edges
+841530
+Average degree distribution
+16.61001894836562
+Clique number
+64
+Density
+0.00016392490598128538
+Max degree
+2217
+Person with max degree
+['Toshio Fukuda']
+Eigenvector centrality
+0.00011529707689324537
+
+
+DETAILED INFO - COMMUNITY  2
+Community size: 
+89430
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 56336], ['SIGMOD Record', 33470], ['World Wide Web', 24438], ['CoRR', 11373], ['Int. J. Hum.-Comput. Stud.', 8603], ['Electr. Notes Theor. Comput. Sci.', 3319], ['Theor. Comput. Sci.', 2122], ['Journal of Systems and Software', 2089], ['Sci. Comput. Program.', 1932], ['Information & Software Technology', 1859]]
+Degree distribution
+Average clustering coefficient
+0.7432617158886277
+Vertices
+89430
+Edges
+760433
+Average degree distribution
+17.006217153080375
+Clique number
+68
+Density
+0.0001901644561952009
+Max degree
+1709
+Person with max degree
+['Mario Piattini']
+Eigenvector centrality
+0.00011068616765950687
+
+
+
+DETAILED INFO - COMMUNITY  3
+Community size: 
+89222
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 46612], ['SIGMOD Record', 31502], ['World Wide Web', 21574], ['CoRR', 20553], ['Int. J. Hum.-Comput. Stud.', 9342], ['Discrete Mathematics', 4708], ['Theor. Comput. Sci.', 4317], ['Discrete Applied Mathematics', 4110], ['Inf. Process. Lett.', 2769], ['Algorithmica', 2575]]
+Degree distribution
+Average clustering coefficient
+0.6931722687708866
+Vertices
+89222
+Edges
+877350
+Average degree distribution
+19.666674138665364
+Clique number
+76
+Density
+0.00022042651549148014
+Max degree
+2131
+Person with max degree
+['Erik D. Demaine']
+Eigenvector centrality
+0.0005721843370912503
+
+
+
+DETAILED INFO - COMMUNITY  4
+Community size: 
+77179
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 46225], ['SIGMOD Record', 24996], ['World Wide Web', 20483], ['Int. J. Hum.-Comput. Stud.', 12435], ['CoRR', 11132], ['IEEE Communications Magazine', 4484], ['IEEE Trans. Communications', 4014], ['IEEE Trans. Wireless Communications', 3697], ['IEEE Journal on Selected Areas in Communications', 3666], ['IEEE Communications Letters', 3406]]
+Degree distribution
+Average clustering coefficient
+0.7358827366670762
+Vertices
+77179
+Edges
+727569
+Average degree distribution
+18.854066520685983
+Clique number
+41
+Density
+0.0002442932768494348
+Max degree
+2613
+Person with max degree
+['Mohamed-Slim Alouini']
+Eigenvector centrality
+0.0004022295395212097
+
+
+
+DETAILED INFO - COMMUNITY  5
+Community size: 
+72419
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 27232], ['NeuroImage', 17375], ['SIGMOD Record', 16577], ['World Wide Web', 14525], ['CoRR', 5761], ['IEEE Trans. Med. Imaging', 5127], ['J. Cognitive Neuroscience', 4096], ['IEEE Trans. Biomed. Engineering', 3053], ['Medical Image Analysis', 2989], ['Int. J. Hum.-Comput. Stud.', 2707]]
+Degree distribution
+Average clustering coefficient
+0.7937507651504232
+Vertices
+72419
+Edges
+647282
+Average degree distribution
+17.876027009486602
+Clique number
+92
+Density
+0.00024684508008349386
+Max degree
+3019
+Person with max degree
+['Nassir Navab']
+Eigenvector centrality
+0.00027399097251611104
+
+
+
+DETAILED INFO - COMMUNITY  6
+Community size: 
+67863
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 35624], ['SIGMOD Record', 20604], ['World Wide Web', 14879], ['IEICE Transactions', 5079], ['Int. J. Hum.-Comput. Stud.', 4344], ['Sensors', 3455], ['CoRR', 2897], ['IEEE Trans. Consumer Electronics', 2330], ['Multimedia Tools Appl.', 1447], ['IEEE Communications Letters', 1338]]
+Degree distribution
+Average clustering coefficient
+0.7395487705492302
+Vertices
+67863
+Edges
+487595
+Average degree distribution
+14.369980696403015
+Clique number
+49
+Density
+0.00021175297952319482
+Max degree
+1596
+Person with max degree
+['Sungyoung Lee']
+Eigenvector centrality
+0.000205918093864226
+
+
+
+DETAILED INFO - COMMUNITY  7
+Community size: 
+63370
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 39002], ['SIGMOD Record', 24300], ['World Wide Web', 15108], ['CoRR', 7950], ['Int. J. Hum.-Comput. Stud.', 4389], ['Speech Communication', 1556], ['ANSI X3H2', 1278], ['Computer Speech & Language', 1022], ['Procesamiento del Lenguaje Natural', 906], ['IEEE Trans. Audio, Speech & Language Processing', 831]]
+Degree distribution
+Average clustering coefficient
+0.7618590618652917
+Vertices
+63370
+Edges
+548020
+Average degree distribution
+17.295881331860702
+Clique number
+62
+Density
+0.0002729391552945526
+Max degree
+1787
+Person with max degree
+['Hermann Ney']
+Eigenvector centrality
+0.00019970842064902586
+
+
+
+DETAILED INFO - COMMUNITY  8
+Community size: 
+63323
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 30667], ['SIGMOD Record', 17682], ['World Wide Web', 9991], ['Int. J. Hum.-Comput. Stud.', 3263], ['Expert Syst. Appl.', 2548], ['J. Inf. Sci. Eng.', 1898], ['Sensors', 1767], ['CoRR', 1667], ['IEICE Transactions', 1652], ['IEEE Trans. on Circuits and Systems', 1262]]
+Degree distribution
+Average clustering coefficient
+0.7627804837874894
+Vertices
+63323
+Edges
+372692
+Average degree distribution
+11.771141607314885
+Clique number
+43
+Density
+0.00018589339577579478
+Max degree
+1299
+Person with max degree
+['Chin-Chen Chang 0001']
+Eigenvector centrality
+0.00024464328449076174
+
+
+
+DETAILED INFO - COMMUNITY  9
+Community size: 
+62187
+The most popular journals: 
+[['EAI Endorsed Trans. Ubiquitous Environments', 29754], ['SIGMOD Record', 16709], ['World Wide Web', 10619], ['CoRR', 8016], ['J. Comput. Physics', 4014], ['Int. J. Hum.-Comput. Stud.', 3826], ['SIAM J. Scientific Computing', 2290], ['Concurrency and Computation: Practice and Experience', 2083], ['Computer Physics Communications', 1867], ['Future Generation Comp. Syst.', 1725]]
+Degree distribution
+Average clustering coefficient
+0.7681435621139064
+Vertices
+62187
+Edges
+552508
+Average degree distribution
+17.769244375834457
+Clique number
+117
+Density
+0.00028574348528341066
+Max degree
+2240
+Person with max degree
+['Jack J. Dongarra']
+Eigenvector centrality
+0.0004062978169343473
+
+
+
+
+
+
+GRAPH
+Degree distribution
+Average clustering coefficient
+0.7265728393390078
+Vertices
+2111917
+Edges
+19400929
+Modularity
+0.7513290109315952
+Average degree distribution
+18.37281389372955
+Clique number
+287
+Density
+8.69959500933173e-06
+Max degree
+4203
+Person with max degree
+['Wen Gao 0001']
+Eigenvector centrality
+5.171346410521607e-06

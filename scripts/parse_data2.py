@@ -1,17 +1,19 @@
+import pdb
+import networkx as nx
 import igraph
 from lxml import etree
 from igraph import Graph, mean
 from itertools import combinations
 import copy
-import matplotlib.pyplot as plt
-import numpy as np
+
+from bs4 import BeautifulSoup
+import requests
 
 xml = 'dblp.xml'
-# xml = 'displays.xml'
+#xml = 'displays.xml'
 
 index = 0
 authors_list = set()
-authors_in_the_biggest_communites = set()
 graph_edges = []
 title = ''
 authorship = {}
@@ -19,75 +21,18 @@ print_communities_details = True
 print_graph = False
 
 
-def print_graph_details(graph, communities=None):
-    # print("Components")
-    # d = g.components('WEAK')
-    # a = d.giant()
-    # print()
-    #
-    #
-    # print("Decompose")
-    # d = g.decompose('WEAK', 122222222, 7)
-    #
-    # print(d)
 
-    print("Degree distribution")
-    degree = igraph.Graph.degree_distribution(graph)
-    bins = degree._bins
-    plot_histogram(bins)
-
-    print("Average clustering coefficient")
-    i = igraph.GraphBase.transitivity_avglocal_undirected(graph)
-    print(i)
-
-    print("Vertices")
-    i = graph.vcount()
-    print(i)
-
-    print("Edges")
-    i = graph.ecount()
-    print(i)
-
-    if communities:
-        print('Modularity')
-        q = graph.modularity(communities)
-        print(q)
-
-    print("Average degree distribution")
-    i = mean(graph.degree())
-    print(i)
-
-    print("Clique number")
-    i = graph.clique_number()
-    print(i)
-
-    print("Density")
-    i = graph.density()
-    print(i)
-
-    print("Max degree")
-    max_degree = graph.maxdegree()
-    print(max_degree)
-
-    print("Person with max degree")
-    print([v.attributes()['name'] for v in graph.vs(_degree_eq=max_degree)])
-
-    print("Eigenvector centrality")
-    i = mean(
-        graph.eigenvector_centrality())  # look at a combination of a nodes edges and the edges of that nodes neighbors.
-    # cares if you are a hub, but it also cares how many hubs you are connected to
-    print(i)
-
-    # print("Betweenness")
-    # between = mean(g.betweenness())  # looks at all the shortest paths that pass through a particular node
-    # print(between)
-
-
-def plot_histogram(x):
-    plt.bar(np.arange(100), x[:100], width=1)
-    plt.ylabel('Degree distribution')
-    plt.show()
-
+def get_author_department(authors):
+    author_universities = []
+    for author in authors:
+        url = 'https://scholar.google.com/citations?hl=en&view_op=search_authors&mauthors=' + author
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, features="lxml")
+        b = soup.findAll("div", {"class": "gsc_oai_aff"})
+        if(len(b) > 0):
+            print(b[0].text)
+            author_universities.append(b[0].text)
+    return author_universities
 
 def add_authors_to_list(new_authors):
     for author in new_authors:
@@ -124,7 +69,8 @@ def show_the_most_popular_journals(community, authors, authorship, number):
 
     the_most_popular_journals = []
     for journal in journal_writers:
-        the_most_popular_journals.append([journal, len(journal_writers[journal])])
+        author_universities = get_author_department(journal_writers[journal])
+        the_most_popular_journals.append([journal, len(journal_writers[journal]), author_universities])
 
     the_most_popular_journals.sort(reverse=True, key=lambda x: x[1])
     print('The most popular journals: ')
@@ -136,21 +82,19 @@ def show_community_size(community):
     print(len(community))
 
 
-def show_big_communities(g, communites, authors, authorship):
+def show_big_communities(communites, authors, authorship):
     ten_biggest_communities = get_biggest_communities(communites, 10)
 
     for i, community in enumerate(ten_biggest_communities):
         print('DETAILED INFO - COMMUNITY ', i)
         show_community_size(community)
         show_the_most_popular_journals(community, authors, authorship, 10)
-        community_graph = g.subgraph(community)
-        print_graph_details(community_graph)
+        # todo: show other details about community
 
 
 authors = []
 i = 0
 max_authors = 0
-journal = ''
 for event, elem in etree.iterparse(source=xml, dtd_validation=False,
                                    load_dtd=True):  # ET.iterparse(xml, events=('start', 'end', 'start-ns', 'end-ns')):
     if i % 100000 == 0:
@@ -162,6 +106,7 @@ for event, elem in etree.iterparse(source=xml, dtd_validation=False,
 
         if elem.tag == 'title':
             title = elem.text
+
         if elem.tag == 'article' or elem.tag == 'inproceedings' or elem.tag == 'incollection' or elem.tag == 'proceedings' or elem.tag == 'www' or elem.tag == 'phdthesis' or elem.tag == 'mastersthesis' or elem.tag == 'book':
             if len(authors) > 1:
                 if elem.tag == 'article' or elem.tag == 'inproceedings' or elem.tag == 'incollection' or elem.tag == 'proceedings':
@@ -194,17 +139,73 @@ g.add_edges(graph_edges)  # add the edges to the graph.
 
 print('Communities:')
 p = g.community_multilevel()
-print(p)
-print('Number of communities')
-print(len(p))
+# print(p)
 
 if print_communities_details:
-    show_big_communities(g, p, graph_vertices, authorship)
+    show_big_communities(p, graph_vertices, authorship)
 
-print_graph_details(g, p)
+# print("Components")
+# d = g.components('WEAK')
+# a = d.giant()
+# print()
+#
+#
+# print("Decompose")
+# d = g.decompose('WEAK', 122222222, 7)
+#
+# print(d)
+
+print("Degree distribution")
+i = igraph.Graph.degree_distribution(g)
+print(i)
+
+print("Average clustering coefficient")
+i = igraph.GraphBase.transitivity_avglocal_undirected(g)
+print(i)
+
+print("Vertices")
+i = g.vcount()
+print(i)
+
+print("Edges")
+i = g.ecount()
+print(i)
+
+print('Modularity')
+q = g.modularity(p)
+print(q)
+
+print("Average degree distribution")
+i = mean(g.degree())
+print(i)
+
+print("Clique number")
+i = g.clique_number()
+print(i)
+
+print("Density")
+i = g.density()
+print(i)
+
+print("Max degree")
+max_degree = g.maxdegree()
+print(max_degree)
+
+print("Person with max degree")
+print([v.attributes()['name'] for v in g.vs(_degree_eq=max_degree)])
+
+print("Eigenvector centrality")
+i = mean(g.eigenvector_centrality())  # look at a combination of a nodes edges and the edges of that nodes neighbors.
+# cares if you are a hub, but it also cares how many hubs you are connected to
+print(i)
+
+# print("Betweenness")
+# between = mean(g.betweenness())  # looks at all the shortest paths that pass through a particular node
+# print(between)
+
 
 if print_graph:
     g.vs["label"] = g.vs["name"]
     # layout = g.layout("mds")
     layout = g.layout("graphopt")
-    igraph.plot(g, layout=layout, bbox=(10000, 10000), vertex_size=40, edge_width=2, label_size=10)
+    igraph.plot(g, layout=layout, bbox=(10000, 10000), vertex_size=40, edge_width=1, label_size=10)
